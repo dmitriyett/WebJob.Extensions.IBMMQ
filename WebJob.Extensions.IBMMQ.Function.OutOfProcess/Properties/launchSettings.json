@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "WebJob.Extensions.IBMMQ.Function.OutOfProcess": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7092",
+      "launchBrowser": false
+    }
+  }
+}

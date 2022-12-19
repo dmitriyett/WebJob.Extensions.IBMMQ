@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebJob.Extensions.IBMMQ", "WebJob.Extensions.IBMMQ\WebJob.Extensions.IBMMQ.csproj", "{86CF69E5-7B8D-4386-94D3-B6A4E892085D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebJob.Extensions.IBMMQ.Function.InProcess", "WebJob.Extensions.IBMMQ.Function.InProcess\WebJob.Extensions.IBMMQ.Function.InProcess.csproj", "{5851F14C-4A9F-42B8-BC4F-135354E1A119}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebJob.Extensions.IBMMQ.Function.OutOfProcess", "WebJob.Extensions.IBMMQ.Function.OutOfProcess\WebJob.Extensions.IBMMQ.Function.OutOfProcess.csproj", "{705F9804-9721-4B95-B1B7-39DA708120CC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Worker.Extensions.IBMMQ", "Worker.Extensions.IBMMQ\Worker.Extensions.IBMMQ.csproj", "{4095A880-15A9-4232-8C61-97B17E7347BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8D2C1348-C917-4CA7-83BE-DB4E7ECA5A48}"
+	ProjectSection(SolutionItems) = preProject
+		NuGet.Config = NuGet.Config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86CF69E5-7B8D-4386-94D3-B6A4E892085D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86CF69E5-7B8D-4386-94D3-B6A4E892085D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86CF69E5-7B8D-4386-94D3-B6A4E892085D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86CF69E5-7B8D-4386-94D3-B6A4E892085D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5851F14C-4A9F-42B8-BC4F-135354E1A119}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5851F14C-4A9F-42B8-BC4F-135354E1A119}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5851F14C-4A9F-42B8-BC4F-135354E1A119}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5851F14C-4A9F-42B8-BC4F-135354E1A119}.Release|Any CPU.Build.0 = Release|Any CPU
+		{705F9804-9721-4B95-B1B7-39DA708120CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{705F9804-9721-4B95-B1B7-39DA708120CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{705F9804-9721-4B95-B1B7-39DA708120CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{705F9804-9721-4B95-B1B7-39DA708120CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4095A880-15A9-4232-8C61-97B17E7347BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4095A880-15A9-4232-8C61-97B17E7347BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4095A880-15A9-4232-8C61-97B17E7347BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4095A880-15A9-4232-8C61-97B17E7347BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E1E3DF3-DABA-4061-9030-96C5CDE49D69}
+	EndGlobalSection
+EndGlobal
