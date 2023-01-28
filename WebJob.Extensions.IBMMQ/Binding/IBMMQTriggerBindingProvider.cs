@@ -54,7 +54,9 @@ internal class IBMMQTriggerBindingProvider : ITriggerBindingProvider
             return Task.FromResult((IListener)listener);
         }
 
+#pragma warning disable CS0618
         var binding = BindingFactory.GetTriggerBinding(new IBMMQTriggerBindingStrategy(), context.Parameter,
+#pragma warning restore CS0618
             _converterManager,
             CreateListener);
 

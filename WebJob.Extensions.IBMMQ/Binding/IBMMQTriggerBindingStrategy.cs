@@ -4,7 +4,9 @@ using Microsoft.Azure.WebJobs.Host.Triggers;
 
 namespace WebJob.Extensions.IBMMQ.Binding;
 
+#pragma warning disable CS0618
 public class IBMMQTriggerBindingStrategy : ITriggerBindingStrategy<MQMessage, IBMMQTriggerInput>
+#pragma warning restore CS0618
 {
     // when was invoked from portal
     public IBMMQTriggerInput ConvertFromString(string message)
