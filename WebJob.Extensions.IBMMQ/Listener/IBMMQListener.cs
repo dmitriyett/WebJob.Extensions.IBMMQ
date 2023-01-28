@@ -9,9 +9,9 @@ using WebJob.Extensions.IBMMQ.Scaling;
 
 namespace WebJob.Extensions.IBMMQ.Listener;
 
-public sealed class IbmMqListener : IListener, IScaleMonitorProvider
+internal sealed class IbmMqListener : IListener, IScaleMonitorProvider
 {
-    private readonly IbmMqListenerSettings _settings;
+    private readonly IBMMQListenerSettings _settings;
     private readonly ILogger _logger;
     private readonly ITriggeredFunctionExecutor _executor;
     private readonly bool _singleDispatch;
@@ -19,7 +19,7 @@ public sealed class IbmMqListener : IListener, IScaleMonitorProvider
     private CancellationTokenSource? _cancellationSource;
     private Task? _listenerLoop;
 
-    public IbmMqListener(IbmMqListenerSettings settings, ILogger logger, ITriggeredFunctionExecutor executor,
+    public IbmMqListener(IBMMQListenerSettings settings, ILogger logger, ITriggeredFunctionExecutor executor,
         bool singleDispatch)
     {
         _settings = settings;
@@ -68,6 +68,7 @@ public sealed class IbmMqListener : IListener, IScaleMonitorProvider
     {
         while (!token.IsCancellationRequested)
         {
+            // MQQueueManager
             MQMessage testMessage = new();
             testMessage.WriteString(JsonConvert.SerializeObject(_settings));
             testMessage.DataOffset = 0;
@@ -79,7 +80,7 @@ public sealed class IbmMqListener : IListener, IScaleMonitorProvider
 
             TriggeredFunctionData input = new()
             {
-                TriggerValue = new MQTriggerInput(testMessage)
+                TriggerValue = new IBMMQTriggerInput(testMessage)
             };
 
             await _executor.TryExecuteAsync(input, token).ConfigureAwait(false);
@@ -87,4 +88,37 @@ public sealed class IbmMqListener : IListener, IScaleMonitorProvider
             await Task.Delay(TimeSpan.FromSeconds(10), token).ConfigureAwait(false);
         }
     }
+}
+
+internal interface IMQQueueManagerFactory
+{
+    IMQQueueManager CreateQueueManager(IBMMQListenerSettings settings);
+}
+
+internal class MQQueueManagerFactory : IMQQueueManagerFactory
+{
+    public IMQQueueManager CreateQueueManager(IBMMQListenerSettings settings)
+    {
+        MQQueueManager queueManager = new(settings.QueueManager, settings.BuildConnectionProperties());
+        
+        return new MQQueueManagerAdapter(queueManager);
+    }
+}
+
+internal interface IMQQueueManager
+{
+    
+}
+
+internal class MQQueueManagerAdapter : IMQQueueManager
+{
+    public MQQueueManagerAdapter(MQQueueManager queueManager)
+    {
+        
+    }   
+}
+
+internal interface IMQQueue
+{
+    
 }

@@ -8,16 +8,16 @@ using WebJob.Extensions.IBMMQ.Listener;
 
 namespace WebJob.Extensions.IBMMQ.Binding;
 
-public class IbmMqTriggerBinding : ITriggerBinding
+internal class IBMMQTriggerBinding : ITriggerBinding
 {
-    private readonly IbmMqListenerSettings _settings;
+    private readonly IBMMQListenerSettings _settings;
     private readonly ILogger _logger;
     private readonly bool _singleDispatch;
 
     private readonly Task<ITriggerData> _emptyBindingDataTask =
         Task.FromResult<ITriggerData>(new TriggerData(null, new Dictionary<string, object>()));
 
-    public IbmMqTriggerBinding(IbmMqListenerSettings settings, ILogger logger, bool singleDispatch)
+    public IBMMQTriggerBinding(IBMMQListenerSettings settings, ILogger logger, bool singleDispatch)
     {
         _settings = settings;
         _logger = logger;

@@ -2,14 +2,14 @@ using IBM.WMQ;
 
 namespace WebJob.Extensions.IBMMQ.Binding;
 
-public class MQTriggerInput
+public class IBMMQTriggerInput
 {
-    public MQTriggerInput(MQMessage message)
+    public IBMMQTriggerInput(MQMessage message)
     {
         Messages = new[] { message };
     }
 
-    public MQTriggerInput(IEnumerable<MQMessage> messages)
+    public IBMMQTriggerInput(IEnumerable<MQMessage> messages)
     {
         Messages = messages.ToArray();
     }

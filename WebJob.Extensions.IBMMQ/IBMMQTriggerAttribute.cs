@@ -4,9 +4,9 @@ namespace WebJob.Extensions.IBMMQ;
 
 [AttributeUsage(AttributeTargets.Parameter)]
 [Binding]
-public class IbmMqTriggerAttribute : Attribute
+public class IBMMQTriggerAttribute : Attribute
 {
-    public IbmMqTriggerAttribute(string queueManager, string serverName, string portNumber, string channel, string queueName)
+    public IBMMQTriggerAttribute(string queueManager, string serverName, string portNumber, string channel, string queueName)
     {
         QueueManager = queueManager;
         ServerName = serverName;

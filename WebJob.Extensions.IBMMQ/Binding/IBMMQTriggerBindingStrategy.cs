@@ -4,14 +4,14 @@ using Microsoft.Azure.WebJobs.Host.Triggers;
 
 namespace WebJob.Extensions.IBMMQ.Binding;
 
-public class IbmMqTriggerBindingStrategy : ITriggerBindingStrategy<MQMessage, MQTriggerInput>
+public class IBMMQTriggerBindingStrategy : ITriggerBindingStrategy<MQMessage, IBMMQTriggerInput>
 {
     // when was invoked from portal
-    public MQTriggerInput ConvertFromString(string message)
+    public IBMMQTriggerInput ConvertFromString(string message)
     {
         MQMessage mqMessage = new();
         mqMessage.WriteString(message);
-        return new MQTriggerInput(mqMessage);
+        return new IBMMQTriggerInput(mqMessage);
     }
 
     // those two methods is where you plugin metadata binding.
@@ -21,9 +21,9 @@ public class IbmMqTriggerBindingStrategy : ITriggerBindingStrategy<MQMessage, MQ
     // for example: GetBindingContract => dictionary["MessageId"] = typeof(string)
     // and GetBindingData => dictionary["MessageId"] = input.Messages[0].MessageID
     public Dictionary<string, Type> GetBindingContract(bool isSingleDispatch) => new();
-    public Dictionary<string, object> GetBindingData(MQTriggerInput value) => new();
+    public Dictionary<string, object> GetBindingData(IBMMQTriggerInput value) => new();
 
-    public MQMessage BindSingle(MQTriggerInput value, ValueBindingContext context) => value.Messages[0];
+    public MQMessage BindSingle(IBMMQTriggerInput value, ValueBindingContext context) => value.Messages[0];
 
-    public MQMessage[] BindMultiple(MQTriggerInput value, ValueBindingContext context) => value.Messages;
+    public MQMessage[] BindMultiple(IBMMQTriggerInput value, ValueBindingContext context) => value.Messages;
 }

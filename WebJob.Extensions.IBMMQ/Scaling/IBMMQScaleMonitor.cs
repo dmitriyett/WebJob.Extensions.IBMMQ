@@ -1,10 +1,11 @@
 ﻿using Microsoft.Azure.WebJobs.Host.Scale;
+using WebJob.Extensions.IBMMQ.Binding;
 
 namespace WebJob.Extensions.IBMMQ.Scaling;
 
-public class IBMMQScaleMonitor : IScaleMonitor<IBMMQScaleMetrics>
+internal class IBMMQScaleMonitor : IScaleMonitor<IBMMQScaleMetrics>
 {
-    public IBMMQScaleMonitor(IbmMqListenerSettings settings)
+    public IBMMQScaleMonitor(IBMMQListenerSettings settings)
     {
         Descriptor = new ScaleMonitorDescriptor($"IBMMQTrigger-{settings.ServerName}-{settings.QueueManager}-{settings.QueueName}");
     }

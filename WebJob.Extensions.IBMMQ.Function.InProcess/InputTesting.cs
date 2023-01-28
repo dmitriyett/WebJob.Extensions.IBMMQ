@@ -9,7 +9,7 @@ public class InputTesting
 {
     [FunctionName(nameof(TestWithSingleMessage))]
     public Task TestWithSingleMessage(
-        [IbmMqTrigger("QMGR/%TestGettingThisFromConfig%", "SRVNM", "123", "CHNL", "queue name")] MQMessage msg,
+        [IBMMQTrigger("QMGR/%TestGettingThisFromConfig%", "SRVNM", "123", "CHNL", "queue name")] MQMessage msg,
         ILogger log)
     {
         log.LogInformation("Triggered with {Message}", msg.ReadString(msg.MessageLength));
@@ -18,7 +18,7 @@ public class InputTesting
     }
     [FunctionName(nameof(TestWithMultipleMessages))]
     public Task TestWithMultipleMessages(
-        [IbmMqTrigger("QMGR/%TestGettingThisFromConfig%", "SRVNM", "123", "CHNL", "queue name")]
+        [IBMMQTrigger("QMGR/%TestGettingThisFromConfig%", "SRVNM", "123", "CHNL", "queue name")]
          MQMessage[] msgs,
         ILogger log)
     {
@@ -33,7 +33,7 @@ public class InputTesting
 
     [FunctionName(nameof(TestWithStringMessage))]
     public Task TestWithStringMessage(
-        [IbmMqTrigger("QMGR/%TestGettingThisFromConfig%", "SRVNM", "123", "CHNL", "queue name")]
+        [IBMMQTrigger("QMGR/%TestGettingThisFromConfig%", "SRVNM", "123", "CHNL", "queue name")]
          string msg,
         ILogger log)
     {
@@ -44,7 +44,7 @@ public class InputTesting
 
     [FunctionName(nameof(TestWithStringArray))]
     public Task TestWithStringArray(
-        [IbmMqTrigger("QMGR/%TestGettingThisFromConfig%", "SRVNM", "123", "CHNL", "queue name")]
+        [IBMMQTrigger("QMGR/%TestGettingThisFromConfig%", "SRVNM", "123", "CHNL", "queue name")]
          string[] msgs,
         ILogger log)
     {
@@ -60,7 +60,7 @@ public class InputTesting
 
     [FunctionName(nameof(TestWithPoco))]
     public Task TestWithPoco(
-        [IbmMqTrigger("QMGR/%TestGettingThisFromConfig%", "SRVNM", "123", "CHNL", "queue name")]
+        [IBMMQTrigger("QMGR/%TestGettingThisFromConfig%", "SRVNM", "123", "CHNL", "queue name")]
          SimplePoco msg,
         ILogger log)
     {

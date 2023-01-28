@@ -9,13 +9,13 @@ using WebJob.Extensions.IBMMQ.Listener;
 
 namespace WebJob.Extensions.IBMMQ.Binding;
 
-public class IbmMqTriggerBindingProvider : ITriggerBindingProvider
+internal class IBMMQTriggerBindingProvider : ITriggerBindingProvider
 {
     private readonly INameResolver _nameResolver;
     private readonly ILogger _logger;
     private readonly IConverterManager _converterManager;
 
-    public IbmMqTriggerBindingProvider(INameResolver nameResolver, ILogger logger, IConverterManager converterManager)
+    public IBMMQTriggerBindingProvider(INameResolver nameResolver, ILogger logger, IConverterManager converterManager)
     {
         _nameResolver = nameResolver;
         _logger = logger;
@@ -24,7 +24,7 @@ public class IbmMqTriggerBindingProvider : ITriggerBindingProvider
 
     public Task<ITriggerBinding> TryCreateAsync(TriggerBindingProviderContext context)
     {
-        var attribute = context.Parameter.GetCustomAttribute<IbmMqTriggerAttribute>(inherit: false);
+        var attribute = context.Parameter.GetCustomAttribute<IBMMQTriggerAttribute>(inherit: false);
 
         // this method is called for every function parameter.
         // first not null is bound against that parameter.
@@ -35,7 +35,7 @@ public class IbmMqTriggerBindingProvider : ITriggerBindingProvider
 
         // AutoResolveAttribute is honored by certain adapters, namely BindToInput, BindToValueProvider, BindToCollector
         // in other cases you have to implement that functionality yourself
-        IbmMqListenerSettings listenerSettings = new(
+        IBMMQListenerSettings listenerSettings = new(
             _nameResolver.ResolveWholeString(attribute.QueueManager),
             _nameResolver.ResolveWholeString(attribute.ServerName),
             int.Parse(_nameResolver.ResolveWholeString(attribute.PortNumber)),
@@ -54,7 +54,7 @@ public class IbmMqTriggerBindingProvider : ITriggerBindingProvider
             return Task.FromResult((IListener)listener);
         }
 
-        var binding = BindingFactory.GetTriggerBinding(new IbmMqTriggerBindingStrategy(), context.Parameter,
+        var binding = BindingFactory.GetTriggerBinding(new IBMMQTriggerBindingStrategy(), context.Parameter,
             _converterManager,
             CreateListener);
 

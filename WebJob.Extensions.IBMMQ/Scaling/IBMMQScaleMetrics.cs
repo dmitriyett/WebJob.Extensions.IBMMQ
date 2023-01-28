@@ -2,7 +2,7 @@
 
 namespace WebJob.Extensions.IBMMQ.Scaling;
 
-public class IBMMQScaleMetrics : ScaleMetrics
+internal class IBMMQScaleMetrics : ScaleMetrics
 {
     public long MessageCount { get; set; }
 }

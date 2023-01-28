@@ -40,7 +40,7 @@ public class IBMMQExtensionConfigProvider : IExtensionConfigProvider
             .AddConverter<byte[], MQMessage>(BytesToMQMessage)
             .AddOpenConverter<OpenType.Poco, MQMessage>(typeof(PocoToMQMessageConverter<>));
 
-        var triggerBindingRule = context.AddBindingRule<IbmMqTriggerAttribute>();
+        var triggerBindingRule = context.AddBindingRule<IBMMQTriggerAttribute>();
 
         // There is also BindToTrigger<> overload that was supposed to automatically plug in
         // trigger provided values to converter infrastructure, but it seems there are two problems with it:
@@ -52,7 +52,7 @@ public class IBMMQExtensionConfigProvider : IExtensionConfigProvider
         // To work that around you can have two options: register multiple bindings
         // (i.e. BindToTrigger<MQMessage>(...) and BindToTrigger<MQMessage[]>(...))
         // or utilize ITriggerBindingStrategy pattern as shown in this example.
-        triggerBindingRule.BindToTrigger(new IbmMqTriggerBindingProvider(_nameResolver, _logger, _converterManager));
+        triggerBindingRule.BindToTrigger(new IBMMQTriggerBindingProvider(_nameResolver, _logger, _converterManager));
 
         var bindingRule = context.AddBindingRule<IbmMqAttribute>();
 
